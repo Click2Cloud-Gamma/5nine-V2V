@@ -1,0 +1,27 @@
+<!--
+	AUTHOR: Sadik Tekin
+	GIT: 	https://github.com/SuDT
+	XML STRUCTURE:
+		HOST 	= Source Host (ESXi)
+		TARGET 	= Target Host (local or remote Hyper-V)
+		VM 		= Specify the VM name you wish to convert and migrate, net="<full vSwitch name>"
+-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Temp path="D:\VM-Store"/>
+	<ESXi>
+		<Host name="10.10.144.20" user="root" password="PASSW">
+			<Target name="10.10.144.136" user="localhost\root" password="PASSW" vmpath="D:\VMs\" vhdpath="D:\VMs\Virtual Hard Disks\"/>
+			<VM name="BlankVMTest1" cpu="2" mem="8192" net="Broadcom BCM5708C NetXtreme II GigE - Virtual Switch"/>
+		</Host>
+		<Host name="10.10.144.20" user="root" password="PASSW">
+			<Target name="localhost" user="localhost\root" password="PASSW" vmpath="D:\Hyper-V\" vhdpath="D:\Hyper-V\Virtual Hard Disks\"/>
+			<VM name="BlankVMTest2" cpu="1" mem="4096" net="Broadcom BCM5708C NetXtreme II GigE - Virtual Switch"/>
+		</Host>
+		<Host name="10.10.144.20" user="root" password="PASSW">
+			<Target name="localhost" user="localhost\root" password="PASSW" vmpath="D:\Hyper-V\" vhdpath="D:\Hyper-V\Virtual Hard Disks\"/>
+			<VM name="BlankVMTest3" cpu="1" mem="4096" net="Broadcom BCM5708C NetXtreme II GigE - Virtual Switch"/>
+		</Host>
+	</ESXi>
+</Config>
